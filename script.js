@@ -123,7 +123,6 @@ const showData = (event) => {
           (columnName) => {
             // Creating Table Head Elements
             const thEle = document.createElement("th");
-            //   thEle.className = " table-dark";
             thEle.innerText = columnName;
             trEle.appendChild(thEle);
           }

@@ -57,31 +57,31 @@ search.addEventListener("keypress", numeralsOnly);
 
 searchDiv.append(search);
 
-const form = document.createElement("form");
-form.className = "formClass";
-const formDiv = document.createElement("div");
-
 btnDiv = document.createElement("div");
+btnDiv.className = "btnClass";
 
 const submit = document.createElement("button");
 submit.innerText = "Search";
 submit.id = "submit";
 submit.className = "btn btn-success";
 
-const reset = document.createElement("button");
-reset.innerText = "Clear";
-reset.className = "btn btn-success";
+btnDiv.append(submit);
 
-btnDiv.append(submit, reset);
-formDiv.append(btnDiv);
-form.append(formDiv);
+document.body.append(searchDiv, btnDiv);
 
-document.body.append(searchDiv, form);
+//  Main DIV
+const mainDiv = document.createElement("div");
+
+mainDiv.className = "table-responsive";
+
+document.body.append(mainDiv);
 
 // ---------------------
 
 const showData = (event) => {
   event.preventDefault();
+
+  mainDiv.innerText = "";
 
   const getData = async () => {
     try {
@@ -99,13 +99,6 @@ const showData = (event) => {
       if (data == null) {
         alert("Enter Valid Pincode");
       } else {
-        //  Main DIV
-        const mainDiv = document.createElement("div");
-
-        mainDiv.className = "table-responsive";
-
-        document.body.append(mainDiv);
-
         // // Creating Table Elements
         const tableEle = document.createElement("table");
         tableEle.className = " table table-info";
@@ -227,5 +220,3 @@ const get = (event) => {
 submit.addEventListener("click", showData);
 
 search.addEventListener("keydown", get);
-
-reset.addEventListener("click", reset);
